@@ -4,7 +4,7 @@ function Header() {
 	return (
 		<nav className="">
 			<div className="relative flex items-center h-16 px-5">
-				<h1 className="text-2xl font-bold justify-center">YEARDLE</h1>
+				<h1 className="text-2xl font-bold justify-center text-white">YEARDLE</h1>
 			</div>
 		</nav>
 	)

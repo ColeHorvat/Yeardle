@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 function Container({ children }) {
     return (
-        <div className="relative px-0 mx-0 max-w-7xl md:mx-auto sm:px-6 lg:px-8">
+        <div className="relative bg-gray-900 px-0 mx-0 max-w-7xl md:mx-auto sm:px-6 lg:px-8">
             <Head>
                 <title>Cole Horvat</title>
             </Head>
