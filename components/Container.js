@@ -3,9 +3,9 @@ import Head from 'next/head'
 
 function Container({ children }) {
     return (
-        <div className="relative bg-gray-900 px-0 mx-0 max-w-7xl md:mx-auto sm:px-6 lg:px-8">
+        <div className="relative bg-black px-0 mx-0 w-screen h-screen md:mx-auto">
             <Head>
-                <title>Cole Horvat</title>
+                <title>Yeardle</title>
             </Head>
             {children}
         </div>
