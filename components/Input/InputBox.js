@@ -2,7 +2,9 @@ import React from 'react'
 
 function InputBox() {
   return (
-    <div></div>
+    <div className="">
+
+    </div>
   )
 }
 
