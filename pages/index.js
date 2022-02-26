@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Container from '../components/Container.js'
 import Header from '../components/Header.js'
+import FactContainer from '../components/FactContainer.js'
 
 const { DOMParser } = require('@xmldom/xmldom');
 const xml2js = require('xml2js')
@@ -38,6 +39,7 @@ export default function Home() {
 	return (
 		<Container>
 			<Header />
+			<FactContainer />
 		</Container>
 	)
 }
