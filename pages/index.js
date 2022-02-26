@@ -8,6 +8,9 @@ import FactContainer from '../components/FactContainer.js'
 const { DOMParser } = require('@xmldom/xmldom');
 const xml2js = require('xml2js')
 
+let dailyFact = "";
+let dailyAnswer = "";
+
 async function getDailyEvent() {
 	var parser = new DOMParser();
 
@@ -23,9 +26,12 @@ async function getDailyEvent() {
 			throw err;
 		}
 
-		const json = JSON.stringify(result['event']['event'], null, 4);
+		dailyFact = JSON.stringify(result['event']['event'][0]['$']['content'], null, 4);
+		dailyAnswer = JSON.stringify(result['event']['event'][0]['$']['date'], null, 4);
+		// dailyFact = json['content'];
+		// dailyAnswer = json['date'].split('-')[0];
 
-		console.log(json)
+		console.log(dailyAnswer + " : " + dailyFact);
 	}))
 	.catch(err => {
 		console.error(err);
@@ -34,12 +40,12 @@ async function getDailyEvent() {
 
 export default function Home() {
 
-	getDailyEvent();
+	await getDailyEvent();
 
 	return (
 		<Container>
 			<Header />
-			<FactContainer />
+			<FactContainer fact={dailyFact}/>
 		</Container>
 	)
 }
