@@ -44,46 +44,11 @@ function Home({ fact }) {
 
 }
 
-async function getDailyEvent() {
-	
-	var factArray = [];
-
-	fetch("https://api.hiztory.org/random/event.xml", {
-		"method": "GET",
-		"headers": {
-		}
-	})
-		.then(response => response.text())
-		.then(str => parser.parseFromString(str, "text/xml"))
-		.then(data => xml2js.parseString(data, async (err, result) => {
-			if (err) {
-				console.log(err)
-				throw err;
-			}
-			//Push content and answer
-			await factArray.push(JSON.stringify(result['event']['event'][0]['$']['content'], null, 4))
-			await factArray.push(JSON.stringify(result['event']['event'][0]['$']['date'], null, 4))
-			// dailyFact = json['content'];
-			// dailyAnswer = json['date'].split('-')[0];
-			// await console.log(factArray)
-
-			return await factArray;
-		}))
-		.catch(err => {
-			console.error(err);
-		});
-}
-
-
 export async function getStaticProps() {
-	var parser = new DOMParser();
 	let factArray = []
-	// factArray = await getDailyEvent();
-	// console.log(factArray)
-	// let fact = await factArray[0]
+
 	const res = await fetch('https://api.hiztory.org/random/event.xml')
 	const text = await res.text()
-	const str = parser.parseFromString(text, "text/xml");
 	const data = xml2js.parseString(text, async (err, result) => {
 		if (err) {
 			console.log(err)
@@ -92,9 +57,6 @@ export async function getStaticProps() {
 		//Push content and answer
 		await factArray.push(JSON.stringify(result['event']['event'][0]['$']['content'], null, 4))
 		await factArray.push(JSON.stringify(result['event']['event'][0]['$']['date'], null, 4))
-		// dailyFact = json['content'];
-		// dailyAnswer = json['date'].split('-')[0];
-		// await console.log(factArray)
 	})
 
 	const fact = await factArray[0].replace(/\\/g, "");;
