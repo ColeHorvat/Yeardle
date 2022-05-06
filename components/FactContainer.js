@@ -14,12 +14,12 @@ function FactContainer(props) {
   };
 
   const [fact, setFact] = useState("")
-  const [answer, setAnswer] = useState("")
+  const [date, setDate] = useState("")
 
   useEffect(() => {
     setFact(props.fact) 
-    console.log(fact)
-  }, [props.fact])
+    setDate(props.date.substring(0, 5))
+  }, [props.fact, props.date])
   // setFact(props.fact)
   return (
     <div className="grid place-items-center py-12">

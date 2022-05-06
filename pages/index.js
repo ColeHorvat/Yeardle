@@ -19,7 +19,7 @@ const { DOMParser } = require('@xmldom/xmldom');
 
 
 
-function Home({ fact }) {
+function Home({ fact, date }) {
 
 	const [dailyFact, setDailyFact] = useState("");
 	const [dailyAnswer, setDailyAnswer] = useState("");
@@ -37,7 +37,7 @@ function Home({ fact }) {
 	return (
 		<Container>
 			<Header />
-			<FactContainer fact={fact} />
+			<FactContainer fact={fact} date={date} />
 		</Container>
 	)
 
@@ -104,6 +104,7 @@ export async function getStaticProps() {
   	return {
     	props: {
     	  fact: fact,
+		  date: date,
     	},
 		revalidate: 1,
   	}
